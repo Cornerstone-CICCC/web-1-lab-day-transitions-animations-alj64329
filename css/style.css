@@ -25,5 +25,167 @@ body {
   cursor: pointer;
   font-size: 20px;
 }
+.container #btn1, .container #btn2 {
+  background-color: black;
+  color: white;
+  border: 1px solid;
+}
+.container #btn1:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 5px 5px 0 black;
+  transform: translate(-5px, -5px);
+}
+.container #btn2 {
+  position: relative;
+  transition: all 0.3s ease-in;
+  top: 0;
+  left: 0;
+}
+.container #btn2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: -1;
+  transition: all 0.3s ease-in;
+}
+.container #btn2:hover {
+  background-color: white;
+  color: black;
+  top: -5px;
+  left: -5px;
+}
+.container #btn2:hover::before {
+  top: 5px;
+  left: 5px;
+}
+.container #btn3 {
+  background-color: darkgreen;
+  color: white;
+  border: 2px solid black;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+.container #btn3::before {
+  content: "";
+  height: 100%;
+  width: 1em;
+  background-color: white;
+  opacity: 70%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -2em;
+  transform: skewX(-30deg);
+  transition: all 0.5s ease-in-out;
+}
+.container #btn3:hover {
+  background-color: green;
+}
+.container #btn3:hover::before {
+  transform: skewX(-30deg) translateX(13em);
+}
+.container #btn3:not(hover)::before {
+  transform: skewX(-30deg);
+}
+.container #shape1 {
+  background-color: lightgrey;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container #shape1:hover {
+  background-color: yellow;
+}
+.container #shape1:hover::after {
+  content: "Hello!";
+  color: black;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container #shape2 {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: red;
+  animation: shapeShift 5s infinite linear, roll 5s infinite linear;
+}
+.container #figure1 {
+  position: relative;
+}
+.container #figure1 figcaption {
+  padding: 0.5rem;
+  background-color: pink;
+  width: 100%;
+  transform: translateY(-100%);
+  z-index: -1;
+  position: absolute;
+  transition: all 0.5s ease;
+}
+.container #figure1 img {
+  display: block;
+  transition: filter 0.3s ease;
+  z-index: 1;
+}
+.container #figure1 img:hover {
+  filter: grayscale(70%);
+}
+.container #figure1 img:hover + figcaption {
+  transform: translateY(0);
+  visibility: visible;
+}
+
+@keyframes shapeShift {
+  0%, 100% {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    background-color: red;
+  }
+  25% {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: green;
+  }
+  50% {
+    clip-path: polygon(50% 0, 100% 100%, 0 100%, 100% 100%, 0 100%);
+    border-radius: 0;
+  }
+  75% {
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+    clip-path: polygon(50% 0, 100% 38%, 81% 100%, 19% 100%, 0 38%);
+  }
+}
+@keyframes roll {
+  0%, 100% {
+    left: 0;
+    top: 0;
+  }
+  25% {
+    left: calc(100% - 100px);
+    top: 0;
+  }
+  50% {
+    left: calc(100% - 100px);
+    top: calc(100% - 100px);
+  }
+  75% {
+    top: calc(100% - 100px);
+    left: 0;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */
